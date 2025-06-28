@@ -80,6 +80,7 @@ You can create any number of containers depending on your requirements.
 
 
 Command to pull and run the nginx container , httpd container , wordpress container
+```sh
 docker pull nginx:latest
 docker run -d --name nginXX -p 8081:81 nginx (run this directly by skping the above command)
 
@@ -88,6 +89,7 @@ docker run -d --name HttpD -p 8082:82 httpd
 
 docker pull wordpress:php8.4-fpm-alpine
 docker run -d --name Wordpress -p 9091:91 wordpress
+```
 
 Once you have successfully created a container, run the docker ps command to view all active containers.
 
@@ -136,7 +138,6 @@ In simple terms:
 It configures Prometheus to pull container metrics from cAdvisor every 5 seconds.
 
 
-Certainly! Here's the entire content rewritten in a clear, grammatically correct **paragraph-style format**, without numbered steps:
 
 ---
 
