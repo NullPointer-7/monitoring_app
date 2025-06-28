@@ -11,9 +11,6 @@ To achieve this, cAdvisor collects detailed, real-time resource metrics from eac
 
 By harnessing the power of these cutting-edge technologies, we'll build a sleek, all-in-one monitoring tool that keeps a vigilant eye on the health and vital stats of every Docker container in your ecosystem—giving you real-time insights and total control like never before!
 
-
-
-
 Lets get started 
 
 Pre requisites 
@@ -30,11 +27,13 @@ Pre requisites
 		
 Install grafana	
 Import the GPG key:
-
+```bash
 wget  -q  -O gpg.key https://rpm.grafana.com/gpg.key  
 sudo  rpm  --import gpg.key
+```
     
 Create /etc/yum.repos.d/grafana.repo with the following content:
+```bash
 [grafana]
 name=grafana
 baseurl=https://rpm.grafana.com
@@ -44,7 +43,7 @@ gpgcheck=1
 gpgkey=https://rpm.grafana.com/gpg.key
 sslverify=1
 sslcacert=/etc/pki/tls/certs/ca-bundle.crt			
-
+```
 			
 To install Grafana OSS, run the following command:
 	sudo dnf install grafana
