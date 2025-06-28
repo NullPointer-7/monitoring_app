@@ -17,14 +17,19 @@ Pre requisites
 - Create a AWS account
 - create a aws instance (free tire , AWS linux instance is best)
 - In the instance install docker , grafana
+``bash
 	sudo dnf update -y – update packages
 	sudo dnf install docker -y – installing docker command 
+```
 - start and stop
+``bash
 	sudo systemctl enable docker
 	sudo systemctl start docker 
+```
 – run Docker commands without sudo
+``bash
 	sudo usermod -aG docker $USER 
-		
+```		
 Install grafana	
 Import the GPG key:
 ```bash
