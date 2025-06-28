@@ -66,12 +66,17 @@ After installation, you can quickly open your browser and enter your EC2 public 
 Use the default username and password (admin/admin).
 If you see the image below, you can assume that Grafana has been successfully installed.
 
----- Inser images 
+### Grafana login
 
+[![11.png](https://i.postimg.cc/dtW4fmNz/11.png)](https://postimg.cc/6yvr2RX0)
 
 Check if any container are running 
 
 			docker ps -a 
+### Contains running
+
+[![1.png](https://i.postimg.cc/QdGkw4kY/1.png)](https://postimg.cc/tYkxVzcF)
+
 
 Once you've confirmed that no containers are currently running on the EC2 instance, we will try to create a few containers for the purpose of integrating them with Grafana and Prometheus.
 
@@ -152,15 +157,46 @@ Once downloaded, make the plugin executable by running `sudo chmod +x /usr/local
 
 Once Docker Compose is successfully installed, you can start your services by running `docker compose up`. If everything is configured correctly, you should see all the services—such as cAdvisor and Prometheus—running.
 
+[![2.png](https://i.postimg.cc/sgY9rYTj/2.png)](https://postimg.cc/9DfqP73K)
+
 To confirm that cAdvisor is running, open a web browser and navigate to `http://<instance_ip>:8080`, replacing `<instance_ip>` with the public IP address of your instance. If successful, you should see the cAdvisor dashboard.
-*Insert success image here*
+[![4.png](https://i.postimg.cc/jq1hQdWb/4.png)](https://postimg.cc/yWF97KXQ)
 
 Similarly, to check if Prometheus is accessible, open the browser and go to `http://<instance_ip>:9090`.
-*Insert success image here*
+
+[![3.png](https://i.postimg.cc/c48BDyY8/3.png)](https://postimg.cc/dLwC1f5q)
 
 Within Prometheus, you’ll see various container metrics that can be explored by using the **Execute** button after entering PromQL queries. While Prometheus provides access to raw metrics data, the true visualization and monitoring capabilities come from integrating it with Grafana. Prometheus functions as the data collector and time-series database, whereas Grafana serves as the dashboard and visualization layer.
 
 As mentioned earlier, Grafana is already installed on the system. The next step will be to configure it so it can pull data from Prometheus and display meaningful dashboards.
 
 
+Login to grafana
+[![5.png](https://i.postimg.cc/B6YBzJM2/5.png)](https://postimg.cc/njmmjf8L)
 
+Click on connection and Data Sources
+
+[![6.png](https://i.postimg.cc/x8By0trC/6.png)](https://postimg.cc/SY7zdLxF)
+
+In the Connections enter the Ip of host (AWS Instance with the port of grafana 3000)
+
+[![7.png](https://i.postimg.cc/nrXGbNPg/7.png)](https://postimg.cc/WqPk0Yjw)
+
+Hit save , success message is appeares
+
+[![8.png](https://i.postimg.cc/635hz8L9/8.png)](https://postimg.cc/cK2YL4bj)
+
+[![9.png](https://i.postimg.cc/GpjQkFD7/9.png)](https://postimg.cc/KKRBbgJB)
+
+Click on the Dashbords , on to right corner click Import and enter 193 (is the docker grafana pre-defined dash board templete)
+
+[![10.png](https://i.postimg.cc/j5rpj4bM/10.png)](https://postimg.cc/VSDGGM5t)
+
+Up on Success , you will see the Container details , Memeory details etc ..
+
+[![11.png](https://i.postimg.cc/dtW4fmNz/11.png)](https://postimg.cc/6yvr2RX0)
+
+
+
+### Conclusion
+In this tutorial, we’ve successfully demonstrated how to set up a comprehensive container monitoring solution using Prometheus, Grafana, cAdvisor, and Docker. This stack empowers you to monitor the health, performance, and resource usage of your Docker containers in real-time. By leveraging cAdvisor to collect metrics, Prometheus for data storage and alerting, and Grafana for visualization, you gain deep insights into your containerized applications. This setup helps to proactively identify performance bottlenecks, reduce downtime, and optimize resource utilization, ensuring that your containers run smoothly and efficiently. Whether in development or production, this monitoring system enhances visibility and control, making it a vital tool for modern DevOps practices and container management.
