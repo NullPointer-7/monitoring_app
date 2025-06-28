@@ -22,14 +22,13 @@ sudo dnf update -y – update packages
 sudo dnf install docker -y – installing docker command 
 ```
 - start and stop
-``bash
-	sudo systemctl enable docker
-	sudo systemctl start docker 
-```
+
+sudo systemctl enable docker
+sudo systemctl start docker 
+
 – run Docker commands without sudo
-``bash
-	sudo usermod -aG docker $USER 
-```		
+sudo usermod -aG docker $USER 
+		
 Install grafana	
 Import the GPG key:
 ```bash
