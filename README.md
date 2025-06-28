@@ -22,14 +22,16 @@ sudo dnf update -y – update packages
 sudo dnf install docker -y – installing docker command 
 ```
 - start and stop
-
+```
 sudo systemctl enable docker
 sudo systemctl start docker 
-
+```
 – run Docker commands without sudo
+```
 sudo usermod -aG docker $USER 
-		
+```		
 Install grafana	
+
 Import the GPG key:
 ```bash
 wget  -q  -O gpg.key https://rpm.grafana.com/gpg.key  
@@ -54,7 +56,6 @@ To install Grafana OSS, run the following command:
 
 Note , if any issue , use this commands to Enable and Start Grafana , also check status
 ```bash
-
 sudo systemctl enable grafana-server
 sudo systemctl start grafana-server
 sudo systemctl status grafana-server
@@ -71,7 +72,8 @@ If you see the image below, you can assume that Grafana has been successfully in
 
 Check if any container are running 
 
-			docker ps -a 
+	docker ps -a 
+ 
 ### Contains running
 
 [![1.png](https://i.postimg.cc/QdGkw4kY/1.png)](https://postimg.cc/tYkxVzcF)
@@ -145,25 +147,48 @@ It configures Prometheus to pull container metrics from cAdvisor every 5 seconds
 
 ---
 
-Before running Docker Compose, it’s important to first check whether it is installed on your system. You can do this by running the command `docker compose version`. If Docker Compose is not installed, you’ll need to install it manually. Begin by creating the required directory using `sudo mkdir -p /usr/local/lib/docker/cli-plugins`. Then, download the Docker Compose plugin by running:
+Before running Docker Compose, it’s important to first check whether it is installed on your system. You can do this by running the command 
+
+```docker compose version``` 
+
+If Docker Compose is not installed, you’ll need to install it manually. Begin by creating the required directory using 
+
+```bash 
+sudo mkdir -p /usr/local/lib/docker/cli-plugins
+```
+
+Then, download the Docker Compose plugin by running:
 
 ```bash
 sudo curl -SL https://github.com/docker/compose/releases/download/v2.27.0/docker-compose-linux-x86_64 \
   -o /usr/local/lib/docker/cli-plugins/docker-compose
 ```
 
-Once downloaded, make the plugin executable by running `sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose`. After this, you can verify the installation again using `docker compose version`.
+Once downloaded, make the plugin executable by running 
+
+```sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose``` 
+
+After this, you can verify the installation again using
+
+ ```docker compose version```
 
 Once Docker Compose is successfully installed, you can start your services by running `docker compose up`. If everything is configured correctly, you should see all the services—such as cAdvisor and Prometheus—running.
 
+
 [![2.png](https://i.postimg.cc/sgY9rYTj/2.png)](https://postimg.cc/9DfqP73K)
 
+
 To confirm that cAdvisor is running, open a web browser and navigate to `http://<instance_ip>:8080`, replacing `<instance_ip>` with the public IP address of your instance. If successful, you should see the cAdvisor dashboard.
+
+
 [![4.png](https://i.postimg.cc/jq1hQdWb/4.png)](https://postimg.cc/yWF97KXQ)
+
 
 Similarly, to check if Prometheus is accessible, open the browser and go to `http://<instance_ip>:9090`.
 
+
 [![3.png](https://i.postimg.cc/c48BDyY8/3.png)](https://postimg.cc/dLwC1f5q)
+
 
 Within Prometheus, you’ll see various container metrics that can be explored by using the **Execute** button after entering PromQL queries. While Prometheus provides access to raw metrics data, the true visualization and monitoring capabilities come from integrating it with Grafana. Prometheus functions as the data collector and time-series database, whereas Grafana serves as the dashboard and visualization layer.
 
@@ -171,6 +196,7 @@ As mentioned earlier, Grafana is already installed on the system. The next step 
 
 
 Login to grafana
+
 [![5.png](https://i.postimg.cc/B6YBzJM2/5.png)](https://postimg.cc/njmmjf8L)
 
 Click on connection and Data Sources
