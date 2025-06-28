@@ -46,14 +46,15 @@ sslcacert=/etc/pki/tls/certs/ca-bundle.crt
 ```
 			
 To install Grafana OSS, run the following command:
-	sudo dnf install grafana
+```sh sudo dnf install grafana```
 
 Note , if any issue , use this commands to Enable and Start Grafana , also check status
+```bash
 
 sudo systemctl enable grafana-server
 sudo systemctl start grafana-server
 sudo systemctl status grafana-server
-
+```
 
 
 After installation, you can quickly open your browser and enter your EC2 public IP address followed by port 3000 to view the Grafana login page: http://<your-server-ip>:3000.
