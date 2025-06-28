@@ -20,45 +20,40 @@ Pre requisites
 - Create a AWS account
 - create a aws instance (free tire , AWS linux instance is best)
 - In the instance install docker , grafana
-			sudo dnf update -y – update packages
-
-			sudo dnf install docker -y – installing docker command 
-
-			- start and stop
-			sudo systemctl enable docker
-			sudo systemctl start docker
-			
-			sudo usermod -aG docker $USER  
-				– run Docker commands without sudo
+	sudo dnf update -y – update packages
+	sudo dnf install docker -y – installing docker command 
+- start and stop
+	sudo systemctl enable docker
+	sudo systemctl start docker 
+– run Docker commands without sudo
+	sudo usermod -aG docker $USER 
 		
 Install grafana	
-
 Import the GPG key:
 
-
-			wget  -q  -O gpg.key https://rpm.grafana.com/gpg.key  
-			sudo  rpm  --import gpg.key
+wget  -q  -O gpg.key https://rpm.grafana.com/gpg.key  
+sudo  rpm  --import gpg.key
     
 Create /etc/yum.repos.d/grafana.repo with the following content:
-  
-			[grafana]
-			name=grafana
-			baseurl=https://rpm.grafana.com
-			repo_gpgcheck=1
-			enabled=1
-			gpgcheck=1
-			gpgkey=https://rpm.grafana.com/gpg.key
-			sslverify=1
-			sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+[grafana]
+name=grafana
+baseurl=https://rpm.grafana.com
+repo_gpgcheck=1
+enabled=1
+gpgcheck=1
+gpgkey=https://rpm.grafana.com/gpg.key
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt			
 
+			
 To install Grafana OSS, run the following command:
-			sudo dnf install grafana
+	sudo dnf install grafana
 
 Note , if any issue , use this commands to Enable and Start Grafana , also check status
 
-			sudo systemctl enable grafana-server
-			sudo systemctl start grafana-server
-			sudo systemctl status grafana-server
+sudo systemctl enable grafana-server
+sudo systemctl start grafana-server
+sudo systemctl status grafana-server
 
 
 
